@@ -1,0 +1,88 @@
+name: 🐛 Bug Report
+description: Report a bug or unexpected behavior
+title: "[Bug]: "
+labels: kind/bug
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: |
+        Please provide a detailed description of the bug. Include steps you took and any unexpected behavior observed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: How can we reproduce it?
+      description: Provide minimal steps to reproduce the issue
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment details
+      description: |
+        Include OS, language/runtime versions, and any other relevant environment info
+      value: |
+        <details>
+
+        ```text
+        OS: 
+        Runtime/Language: 
+        Dependencies: 
+        ```
+
+        </details>
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs or error messages
+      description: Paste any console output, error messages, or stack traces here
+      value: |
+        <details>
+
+        ```text
+        # Paste logs here
+        ```
+
+        </details>
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or recordings
+      description: Optional, but can help illustrate the issue
+      value: |
+        <details>
+
+        </details>
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Low
+        - Medium
+        - High
+        - Critical
+      description: Rate the impact of this bug
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional notes
+      description: Anything else the team should know
