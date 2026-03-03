@@ -33,7 +33,7 @@ For futher information, please refer to the documentation:
 I will glad to accept contributions to this project. If you have any ideas or suggestions, please feel free to open an issue or submit a pull request.
 
 > [!NOTE]
-> before anything, check CONTRIBUTING.md and CODE_OF_CONDUCT.md for guidelines and rules.
+> Before anything, please check [CONTRIBUTING.md](CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for guidelines and rules.
 
 ## License
 
