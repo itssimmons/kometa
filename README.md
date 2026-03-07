@@ -1,6 +1,6 @@
-# Kometrics
+# 🪁 Kometa
 
-A simple tool for collecting and analyzing metrics from various sources, and exposes them in a unified format.
+Kometa is a very lightweight and straightforward daemon for collecting and analyzing metrics from the hardware of the machine where it is hosted.
 
 ## Table of Contents
 
