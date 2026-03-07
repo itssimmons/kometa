@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Websocket Test</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/fordus/shadcn-classless@main/dist/shadcn-classless.css"
+        />
+        <style>
+            [data-status="connected"] {
+                display: flex;
+                align-items: center;
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background-color: green;
+                border: 1px solid darkgreen;
+
+                &::after {
+                    content: "Connected";
+                    margin-left: 18px;
+                    font-weight: medium;
+                    font-size: 14px;
+                    color: green;
+                }
+            }
+
+            [data-status="disconnected"] {
+                display: flex;
+                align-items: center;
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background-color: gray;
+                border: 1px solid darkgray;
+
+                &::after {
+                    content: "Disconnected";
+                    margin-left: 18px;
+                    font-weight: medium;
+                    font-size: 14px;
+                    color: gray;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+
+        <script
+            crossorigin
+            src="https://unpkg.com/react@18/umd/react.development.js"
+        ></script>
+        <script
+            crossorigin
+            src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+        ></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script type="text/babel">
+            function App() {
+                const [message, setMessage] = React.useState("");
+                const [messages, setMessages] = React.useState([]);
+                const [status, setStatus] = React.useState("disconnected");
+                const wsRef = React.useRef(null);
+
+                React.useEffect(() => {
+                    const ws = new WebSocket("ws://localhost:8080/echo");
+                    wsRef.current = ws;
+
+                    ws.onopen = () => {
+                        console.log("WebSocket connection established");
+                        setStatus("connected");
+                    };
+
+                    ws.onmessage = (event) => {
+                        setMessages((prevMessages) => [
+                            ...prevMessages,
+                            event.data,
+                        ]);
+                    };
+
+                    ws.onclose = () => {
+                        console.log("WebSocket connection closed");
+                        setStatus("disconnected");
+                    };
+
+                    return () => {
+                        ws.close();
+                    };
+                }, []);
+
+                return (
+                    <div>
+                        <span data-status={status} />
+                        <h1>Message Log:</h1>
+                        <ul>
+                            {messages.map((msg, index) => (
+                                <li key={index}>{msg}</li>
+                            ))}
+                        </ul>
+                        <input
+                            type="text"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key !== "Enter") return;
+                                const { current: ws } = wsRef;
+
+                                if (ws && ws.readyState === WebSocket.OPEN) {
+                                    ws.send(message);
+                                    setMessage("");
+                                }
+                            }}
+                            placeholder="Type a message and press Enter"
+                        />
+                    </div>
+                );
+            }
+
+            const container = document.querySelector("#container");
+            const root = ReactDOM.createRoot(container);
+            root.render(<App />);
+        </script>
+    </body>
+</html>
