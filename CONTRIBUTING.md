@@ -40,7 +40,7 @@ Make sure you have the following installed before working on the project:
 Use the Gradle wrapper to build the project:
 
 ```
-gradle build
+./gradlew build
 ```
 
 This will compile the source code and produce a fat JAR in `build/libs/`.
@@ -56,7 +56,7 @@ java -jar build/libs/kometrics-0.1.0-SNAPSHOT.jar
 Or run it directly via Gradle:
 
 ```
-gradle run -q --console=plain
+./gradlew run -q --console=plain
 ```
 
 ## Submitting an Issue
