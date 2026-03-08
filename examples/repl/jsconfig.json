@@ -1,0 +1,11 @@
+{
+	"$schema": "https://json.schemastore.org/jsconfig",
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "esnext",
+		"checkJs": true,
+		"noImplicitAny": false,
+		"allowJs": true,
+		"strict": true
+	}
+}

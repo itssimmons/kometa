@@ -1,4 +1,4 @@
-package io.github.kometa
+package io.github.kometa.domain.systeminfo
 
 class Hardware {
     val cpuInfo: CpuInfo

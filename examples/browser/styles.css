@@ -1,0 +1,35 @@
+[data-status="connected"] {
+	display: flex;
+	align-items: center;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background-color: green;
+	border: 1px solid darkgreen;
+
+	&::after {
+		content: "Connected";
+		margin-left: 18px;
+		font-weight: medium;
+		font-size: 14px;
+		color: green;
+	}
+}
+
+[data-status="disconnected"] {
+	display: flex;
+	align-items: center;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background-color: gray;
+	border: 1px solid darkgray;
+
+	&::after {
+		content: "Disconnected";
+		margin-left: 18px;
+		font-weight: medium;
+		font-size: 14px;
+		color: gray;
+	}
+}

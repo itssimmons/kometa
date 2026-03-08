@@ -1,4 +1,4 @@
-package io.github.kometa
+package io.github.kometa.domain.systeminfo
 
 class MemInfo {
     val memTotal: Long

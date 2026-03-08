@@ -1,6 +1,7 @@
 package io.github.kometa
 
+import io.github.kometa.websocket.Server as WebSocket
+
 fun main() {
-    val server = WebSocket(8080)
-    server.start()
+    WebSocket.listen(8080u)
 }

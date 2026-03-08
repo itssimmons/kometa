@@ -1,0 +1,9 @@
+{
+	"name": "repl-sample",
+	"version": "0.0.0",
+	"private": true,
+	"module": "false",
+	"scripts": {
+		"start": "node index.js"
+	}
+}

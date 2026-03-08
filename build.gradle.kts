@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.1.0"
+    kotlin("plugin.serialization") version "2.3.10"
     id("com.gradleup.shadow") version "9.3.2"
 }
 
@@ -11,8 +12,9 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.10.0")
     implementation("org.java-websocket:Java-WebSocket:1.6.0")
+    implementation("com.typesafe:config:1.4.4")
 }
 
 tasks.shadowJar {

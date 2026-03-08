@@ -1,3 +1,6 @@
+# Project
+sessions/
+
 # Gradle build files
 build/
 .gradle/
@@ -14,3 +17,7 @@ build/
 
 # OS
 .DS_Store
+
+# Examples
+examples/**/package-lock.json
+examples/**/node_modules/
