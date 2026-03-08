@@ -2,10 +2,10 @@ package io.github.kometa.websocket
 
 import io.github.kometa.models.Session
 
-import org.java_websocket.WebSocket
+import java.io.File
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.decodeFromString
-import java.io.File
+import org.java_websocket.WebSocket
 
 class SessionManager {
     companion object {

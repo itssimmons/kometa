@@ -2,10 +2,10 @@ package io.github.kometa.websocket
 
 import io.github.kometa.models.Session
 
+import java.net.InetSocketAddress
 import org.java_websocket.WebSocket
 import org.java_websocket.handshake.ClientHandshake
 import org.java_websocket.server.WebSocketServer
-import java.net.InetSocketAddress
 
 class Server(port: UShort = 8080u) : WebSocketServer(InetSocketAddress(port.toInt())) {
     companion object {

@@ -1,11 +1,11 @@
-FROM archlinux:latest
+FROM archlinux/archlinux:base
 
-RUN pacman -Syu --noconfirm && \
-    pacman --noconfirm -S jdk21-openjdk unzip zip curl
+ENV VERSION=0.1.0-SNAPSHOT
+ENV ROOT_PROJECT_NAME=kometa
 
-RUN curl -sLO https://github.com/JetBrains/kotlin/releases/download/v2.3.10/kotlin-compiler-2.3.10.zip && \
-    unzip kotlin-compiler-2.3.10.zip -d /usr/local/ && \
-    rm kotlin-compiler-2.3.10.zip
+RUN echo 'DisableSandbox' >> /etc/pacman.conf && \
+		pacman -Syu --noconfirm && \
+		pacman --noconfirm -S jdk21-openjdk
 
 ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="$JAVA_HOME/bin:$PATH"
@@ -15,12 +15,10 @@ WORKDIR /package
 
 COPY . .
 
-RUN ./gradlew build --no-daemon --quiet --console=plain
+RUN ./gradlew build --no-daemon --console=plain --no-watch-fs --stacktrace
 
 HEALTHCHECK --interval=1m --timeout=5s --start-period=5s --retries=1 \
-    CMD ( java -version || exit 1 ) && \
-        ( kotlinc -version || exit 1 )
+	CMD ( java -version || exit 1 ) && \
+			( ./gradlew --version || exit 1 )
 
-ENTRYPOINT [ "./gradlew" ]
-
-CMD [ "run", "--quiet", "--console=plain" ]
+CMD [ "sh", "-c", "java -jar build/libs/${ROOT_PROJECT_NAME}-${VERSION}.jar" ]
