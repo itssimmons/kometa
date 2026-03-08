@@ -25,6 +25,12 @@ tasks.shadowJar {
     }
 }
 
+tasks.named("clean") {
+    doLast {
+        delete(file("sessions"))
+    }
+}
+
 tasks.register<Exec>("run") {
     dependsOn(tasks.shadowJar)
     commandLine("java", "-jar", tasks.shadowJar.get().archiveFile.get().asFile.absolutePath)
