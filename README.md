@@ -24,7 +24,7 @@ For futher information, please refer to the documentation:
 
 ## Compatibility Matrix
 
-| Kometrics Version | Kotlin Version | Java Version | Gradle Version | Arch        |
+| Kometrics Version | Kotlin Version | Java Version | Gradle Version | Platform    |
 |-------------------|----------------|--------------|----------------|-------------|
 | 0.1.0-SNAPSHOT    | 2.3.10         | 21           | 9.0.0          | linux/amd64 |
 
